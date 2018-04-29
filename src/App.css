@@ -1,0 +1,93 @@
+.app {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+button{
+  background: white;
+  border-radius: 10px;
+  font-size: 1em;
+  padding: 15px;
+  width: 200px;
+}
+
+ button:hover {
+  background-color: tomato;
+  color: white;
+ }
+
+.scoreDisplay{
+  background-color: tomato;
+  color: white;
+  font-size: 3em;
+  padding: 15px 0 15px;
+}
+
+.clickHere{
+  padding: 15px 0 15px;
+}
+
+.clickHere button{
+  display: block;
+  margin: 0 auto;
+}
+
+#clickAuto, #progressBarContainer {
+  display: none;
+}
+
+  /*****************/
+ /* Progress Bars */
+/*****************/
+#progressBarContainer {
+  width: 200px;
+  margin: 0 auto;
+  background-color: lightgray;
+}
+
+#progressBar {
+  width: 0%;
+  height: 30px;
+  background-color: tomato;
+}
+
+  /************/
+ /* Upgrades */
+/************/
+.upgradeMenu{
+  background-color: lightgray;
+  padding: 15px 0 15px;
+      position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.upgradeMenu button{
+  display: block;
+  margin: 0 auto;
+}
