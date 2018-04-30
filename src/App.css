@@ -27,6 +27,10 @@
   to { transform: rotate(360deg); }
 }
 
+img{
+  width: 200px;
+}
+
 button{
   background: white;
   border-radius: 10px;
@@ -51,25 +55,30 @@ button{
   padding: 15px 0 15px;
 }
 
+.clickHere .tomato{
+  display: inline-block;
+}
+
 .clickHere button{
   display: block;
   margin: 0 auto;
 }
 
-#clickAuto, #progressBarContainer {
+#clickAutoClassic, #clickAutoCool, #clickAutoHoly,
+#progressBarContainerClassic, #progressBarContainerCool, #progressBarContainerHoly {
   display: none;
 }
 
   /*****************/
  /* Progress Bars */
 /*****************/
-#progressBarContainer {
+#progressBarContainerClassic, #progressBarContainerCool, #progressBarContainerHoly {
   width: 200px;
   margin: 0 auto;
   background-color: lightgray;
 }
 
-#progressBar {
+#progressBarClassic, #progressBarCool, #progressBarHoly {
   width: 0%;
   height: 30px;
   background-color: tomato;
@@ -90,4 +99,8 @@ button{
 .upgradeMenu button{
   display: block;
   margin: 0 auto;
+}
+
+.upgradeSubMenu{
+  display: inline-block;
 }
