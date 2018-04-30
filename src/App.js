@@ -16,6 +16,7 @@ class App extends Component {
     this.upgradeValue = this.upgradeValue.bind(this);
     this.upgradeMultiplier = this.upgradeMultiplier.bind(this);
 
+    this.purchaseTomato = this.purchaseTomato.bind(this);
     this.purchaseAutoHarvest = this.purchaseAutoHarvest.bind(this);
 
     this.state = {
@@ -32,6 +33,10 @@ class App extends Component {
       multiplierUpgradeCostClassic: 10,
       multiplierUpgradeCostCool: 100,
       multiplierUpgradeCostHoly: 1000,
+      unlockedCool: false,
+      unlockedHoly: false,
+      unlockCostCool: 500,
+      unlockCostHoly: 5000,
       autoActiveClassic: false,
       autoActiveCool: false,
       autoActiveHoly: false,
@@ -61,65 +66,6 @@ class App extends Component {
     }
     else{
       alert("Harvest is not ready yet!");
-    }
-  }
-
-  purchaseAutoHarvest(e){
-    let score = this.state.score;
-
-    if(e.target.value === 'classic'){
-      let upgradeCost = this.state.autoCostClassic;
-      let buttonPurchase = document.getElementById("purchaseAutoHarvestClassic"); 
-      let buttonStart = document.getElementById("clickAutoClassic");
-      let progressBar = document.getElementById("progressBarContainerClassic"); 
-
-      if(score >= upgradeCost){
-        this.setState({ score: score - upgradeCost });
-        this.setState({ autoActiveClassic: true });
-        buttonPurchase.style.display = 'none';
-        buttonStart.style.display = 'block';
-        progressBar.style.display = 'block';
-      }
-      else{
-        alert("Not enough points to purchase upgrade!");
-      }
-    }
-    else if(e.target.value === 'cool'){
-      let upgradeCost = this.state.autoCostCool;
-      let buttonPurchase = document.getElementById("purchaseAutoHarvestCool"); 
-      let buttonStart = document.getElementById("clickAutoCool");
-      let progressBar = document.getElementById("progressBarContainerCool"); 
-
-      if(score >= upgradeCost){
-        this.setState({ score: score - upgradeCost });
-        this.setState({ autoActiveCool: true });
-        buttonPurchase.style.display = 'none';
-        buttonStart.style.display = 'block';
-        progressBar.style.display = 'block';
-      }
-      else{
-        alert("Not enough points to purchase upgrade!");
-      }
-    }
-    else if(e.target.value === 'holy'){
-      let upgradeCost = this.state.autoCostClassic;
-      let buttonPurchase = document.getElementById("purchaseAutoHarvestHoly"); 
-      let buttonStart = document.getElementById("clickAutoHoly");
-      let progressBar = document.getElementById("progressBarContainerHoly"); 
-
-      if(score >= upgradeCost){
-        this.setState({ score: score - upgradeCost });
-        this.setState({ autoActiveHoly: true });
-        buttonPurchase.style.display = 'none';
-        buttonStart.style.display = 'block';
-        progressBar.style.display = 'block';
-      }
-      else{
-        alert("Not enough points to purchase upgrade!");
-      }
-    }
-    else{
-      alert("Upgrade not available!");
     }
   }
 
@@ -225,6 +171,111 @@ class App extends Component {
     }
   }
 
+  purchaseAutoHarvest(e){
+    let score = this.state.score;
+
+    if(e.target.value === 'classic'){
+      let upgradeCost = this.state.autoCostClassic;
+      let buttonPurchase = document.getElementById("purchaseAutoHarvestClassic"); 
+      let buttonStart = document.getElementById("clickAutoClassic");
+      let progressBar = document.getElementById("progressBarContainerClassic"); 
+
+      if(score >= upgradeCost){
+        this.setState({ score: score - upgradeCost });
+        this.setState({ autoActiveClassic: true });
+        buttonPurchase.style.display = 'none';
+        buttonStart.style.display = 'block';
+        progressBar.style.display = 'block';
+      }
+      else{
+        alert("Not enough points to purchase upgrade!");
+      }
+    }
+    else if(e.target.value === 'cool'){
+      let upgradeCost = this.state.autoCostCool;
+      let buttonPurchase = document.getElementById("purchaseAutoHarvestCool"); 
+      let buttonStart = document.getElementById("clickAutoCool");
+      let progressBar = document.getElementById("progressBarContainerCool"); 
+
+      if(score >= upgradeCost){
+        this.setState({ score: score - upgradeCost });
+        this.setState({ autoActiveCool: true });
+        buttonPurchase.style.display = 'none';
+        buttonStart.style.display = 'block';
+        progressBar.style.display = 'block';
+      }
+      else{
+        alert("Not enough points to purchase upgrade!");
+      }
+    }
+    else if(e.target.value === 'holy'){
+      let upgradeCost = this.state.autoCostClassic;
+      let buttonPurchase = document.getElementById("purchaseAutoHarvestHoly"); 
+      let buttonStart = document.getElementById("clickAutoHoly");
+      let progressBar = document.getElementById("progressBarContainerHoly"); 
+
+      if(score >= upgradeCost){
+        this.setState({ score: score - upgradeCost });
+        this.setState({ autoActiveHoly: true });
+        buttonPurchase.style.display = 'none';
+        buttonStart.style.display = 'block';
+        progressBar.style.display = 'block';
+      }
+      else{
+        alert("Not enough points to purchase upgrade!");
+      }
+    }
+    else{
+      alert("Upgrade not available!");
+    }
+  }
+
+  purchaseTomato(e){
+    let score = this.state.score;
+
+    if(e.target.value === 'cool'){
+      let unlockCost = this.state.unlockCostCool;
+      let buttonPurchase = document.getElementById("purchaseTomatoCool");
+      let tomatoImage = document.getElementById("imageCool");
+      let lockedImage = document.getElementById("lockedCool");
+      let clickOptions = document.getElementById("clickOptionsCool");
+
+      if(score >= unlockCost){
+        this.setState({ score: score - unlockCost });
+        this.setState({ unlockedCool: true });
+        buttonPurchase.style.display = 'none';
+        tomatoImage.style.display = 'block';
+        lockedImage.style.display = 'none';
+        clickOptions.style.display = 'block';
+      }
+      else{
+        alert("Not enough points to purchase Cool Tomatoes!");
+      }
+    }
+    else if(e.target.value === 'holy'){
+      let unlockCost = this.state.unlockCostHoly;
+      let buttonPurchase = document.getElementById("purchaseTomatoHoly");
+      let tomatoImage = document.getElementById("imageHoly");
+      let lockedImage = document.getElementById("lockedHoly");
+      let clickOptions = document.getElementById("clickOptionsHoly");
+
+      if(score >= unlockCost){
+        this.setState({ score: score - unlockCost });
+        this.setState({ unlockedHoly: true });
+        buttonPurchase.style.display = 'none';
+        tomatoImage.style.display = 'block';
+        lockedImage.style.display = 'none';
+        clickOptions.style.display = 'block';
+      }
+      else{
+        alert("Not enough points to purchase Holy Tomatoes!");
+      }
+    }
+    else{
+      alert("Unlock not available!");
+    }
+  }
+
   upgradeValue(e){
     let score = this.state.score;
 
@@ -241,7 +292,7 @@ class App extends Component {
         alert("Not enough points to purchase upgrade!");
       }
     }
-    else if(e.target.value === 'cool'){
+    else if(e.target.value === 'cool' && this.state.unlockedCool === true){
       let value = this.state.valueCool;
       let upgradeCost = this.state.valueUpgradeCostCool;
 
@@ -254,7 +305,7 @@ class App extends Component {
         alert("Not enough points to purchase upgrade!");
       }
     }
-    else if(e.target.value === 'holy'){
+    else if(e.target.value === 'holy' && this.state.unlockedHoly === true){
       let value = this.state.valueHoly;
       let upgradeCost = this.state.valueUpgradeCostHoly;
 
@@ -288,7 +339,7 @@ class App extends Component {
         alert("Not enough points to purchase upgrade!");
       }
     }
-    else if(e.target.value === 'cool'){
+    else if(e.target.value === 'cool' && this.state.unlockedCool === true){
       let multiplier = this.state.multiplierCool;
       let upgradeCost = this.state.multiplierUpgradeCostCool;
 
@@ -301,7 +352,7 @@ class App extends Component {
         alert("Not enough points to purchase upgrade!");
       }
     }
-    else if(e.target.value === 'holy'){
+    else if(e.target.value === 'holy' && this.state.unlockedHoly === true){
       let multiplier = this.state.multiplierHoly;
       let upgradeCost = this.state.multiplierUpgradeCostHoly;
 
@@ -328,13 +379,15 @@ class App extends Component {
 
         <div class="clickHere">
           <div class="tomato">
-            <img src={tomato1} alt="Classic Tomato"/>
+            <div class="tomatoImage">
+              <img src={tomato1} alt="Classic Tomato"/>
+            </div>
             <div class="clickManual">
               <button value="classic" onClick={ this.clickManual }>Harvest</button>
             </div>
             <div id="purchaseAutoHarvestClassic">
               <button value='classic' onClick={ this.purchaseAutoHarvest }>Purchase Auto Harvester</button>
-              <p>Cost: { this.state.autoCostClassic }</p>
+              <p class="cost">Cost: { this.state.autoCostClassic }</p>
             </div>
             <div id="clickAutoClassic">
               <button value='classic' onClick={ this.clickAuto }>Start Auto Harvest</button>
@@ -346,39 +399,65 @@ class App extends Component {
           </div>
 
           <div class="tomato">
-            <img src={tomato2} alt="Cool Tomato"/>
-            <div class="clickManual">
-              <button value='cool' onClick={ this.clickManual }>Harvest</button>
+            <div id="imageCool" class="tomatoImage">
+              <img src={tomato2} alt="Cool Tomato"/>
             </div>
-            <div id="purchaseAutoHarvestCool">
-              <button value='cool' onClick={ this.purchaseAutoHarvest }>Purchase Auto Harvester</button>
-              <p>Cost: { this.state.autoCostCool }</p>
+            <div id="lockedCool" class="tomatoImage">
+              <img src={locked} alt="Locked"/>
             </div>
-            <div id="clickAutoCool">
-              <button value='cool' onClick={ this.clickAuto }>Start Auto Harvest</button>
+
+            <div id="purchaseTomatoCool">
+              <button value='cool' onClick={ this.purchaseTomato }>Unlock Cool Tomatoes</button>
+              <p class="cost">Cost: { this.state.unlockCostCool }</p>
             </div>
-            <div id="progressBarContainerCool">
-              <div id="progressBarCool"></div>
+
+            <div id="clickOptionsCool">
+              <div class="clickManual">
+                <button value='cool' onClick={ this.clickManual }>Harvest</button>
+              </div>
+              <div id="purchaseAutoHarvestCool">
+                <button value='cool' onClick={ this.purchaseAutoHarvest }>Purchase Auto Harvester</button>
+                <p class="cost">Cost: { this.state.autoCostCool }</p>
+              </div>
+              <div id="clickAutoCool">
+                <button value='cool' onClick={ this.clickAuto }>Start Auto Harvest</button>
+              </div>
+              <div id="progressBarContainerCool">
+                <div id="progressBarCool"></div>
+              </div>
+              <p>{ this.state.valueCool } X { this.state.multiplierCool }</p>
             </div>
-            <p>{ this.state.valueCool } X { this.state.multiplierCool }</p>
           </div>
 
           <div class="tomato">
-            <img src={tomato3} alt="Holy Tomato"/>
-            <div class="clickManual">
-              <button value='holy' onClick={ this.clickManual }>Harvest</button>
+            <div id="imageHoly" class="tomatoImage">
+              <img src={tomato3} alt="Holy Tomato"/>
             </div>
-            <div id="purchaseAutoHarvestHoly">
-              <button value='holy' onClick={ this.purchaseAutoHarvest }>Purchase Auto Harvester</button>
-              <p>Cost: { this.state.autoCostHoly }</p>
+            <div id="lockedHoly" class="tomatoImage">
+              <img src={locked} alt="Locked"/>
             </div>
-            <div id="clickAutoHoly">
-              <button value='holy' onClick={ this.clickAuto }>Start Auto Harvest</button>
+
+            <div id="purchaseTomatoHoly">
+              <button value='holy' onClick={ this.purchaseTomato }>Unlock Holy Tomatoes</button>
+              <p class="cost">Cost: { this.state.unlockCostHoly }</p>
             </div>
-            <div id="progressBarContainerHoly">
-              <div id="progressBarHoly"></div>
+
+            <div id="clickOptionsHoly">
+              <div class="clickManual">
+                <button value='holy' onClick={ this.clickManual }>Harvest</button>
+              </div>
+              <div id="purchaseAutoHarvestHoly">
+                <button value='holy' onClick={ this.purchaseAutoHarvest }>Purchase Auto Harvester</button>
+                <p class="cost">Cost: { this.state.autoCostHoly }</p>
+              </div>
+              <div id="clickAutoHoly">
+                <button value='holy' onClick={ this.clickAuto }>Start Auto Harvest</button>
+              </div>
+              <div id="progressBarContainerHoly">
+                <div id="progressBarHoly"></div>
+              </div>
+              <p>{ this.state.valueHoly } X { this.state.multiplierHoly }</p>
             </div>
-            <p>{ this.state.valueHoly } X { this.state.multiplierHoly }</p>
           </div>
         </div>
 
@@ -386,33 +465,33 @@ class App extends Component {
           <div class="upgradeSubMenu">
             <div class="upgradeValue">
               <button value="classic" onClick={ this.upgradeValue }>Upgrade Value</button>
-              <p>Cost: { this.state.valueUpgradeCostClassic }</p>
+              <p class="cost">Cost: { this.state.valueUpgradeCostClassic }</p>
             </div>
             <div class="upgradeMultiplier">
               <button value="classic" onClick={ this.upgradeMultiplier }>Upgrade Multiplier</button>
-              <p>Cost: { this.state.multiplierUpgradeCostClassic }</p>
+              <p class="cost">Cost: { this.state.multiplierUpgradeCostClassic }</p>
             </div>
           </div>
 
           <div class="upgradeSubMenu">
             <div class="upgradeValue">
               <button value="cool" onClick={ this.upgradeValue }>Upgrade Value</button>
-              <p>Cost: { this.state.valueUpgradeCostCool }</p>
+              <p class="cost">Cost: { this.state.valueUpgradeCostCool }</p>
             </div>
             <div class="upgradeMultiplier">
               <button value="cool" onClick={ this.upgradeMultiplier }>Upgrade Multiplier</button>
-              <p>Cost: { this.state.multiplierUpgradeCostCool }</p>
+              <p class="cost">Cost: { this.state.multiplierUpgradeCostCool }</p>
             </div>
           </div>
 
           <div class="upgradeSubMenu">
             <div class="upgradeValue">
               <button value="holy" onClick={ this.upgradeValue }>Upgrade Value</button>
-              <p>Cost: { this.state.valueUpgradeCostHoly }</p>
+              <p class="cost">Cost: { this.state.valueUpgradeCostHoly }</p>
             </div>
             <div class="upgradeMultiplier">
               <button value="holy" onClick={ this.upgradeMultiplier }>Upgrade Multiplier</button>
-              <p>Cost: { this.state.multiplierUpgradeCostHoly }</p>
+              <p class="cost">Cost: { this.state.multiplierUpgradeCostHoly }</p>
             </div>
           </div>
         </div>

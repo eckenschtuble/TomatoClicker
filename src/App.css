@@ -65,8 +65,22 @@ button{
 }
 
 #clickAutoClassic, #clickAutoCool, #clickAutoHoly,
-#progressBarContainerClassic, #progressBarContainerCool, #progressBarContainerHoly {
+#progressBarContainerClassic, #progressBarContainerCool, #progressBarContainerHoly,
+#imageCool, #imageHoly,
+#clickOptionsCool, #clickOptionsHoly {
   display: none;
+}
+
+#lockedCool img, #lockedHoly img{
+  height: 250px;
+}
+
+.tomato{
+  padding: 0 15px 0 15px;
+}
+
+.tomatoImage{
+  position: relative;
 }
 
   /*****************/
@@ -87,6 +101,10 @@ button{
   /************/
  /* Upgrades */
 /************/
+.cost{
+  margin: 5px 0 30px 0;
+}
+
 .upgradeMenu{
   background-color: lightgray;
   padding: 15px 0 15px;
@@ -103,4 +121,5 @@ button{
 
 .upgradeSubMenu{
   display: inline-block;
+  padding: 0 15px 0 15px;
 }
