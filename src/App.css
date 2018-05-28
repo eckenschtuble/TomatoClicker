@@ -77,10 +77,12 @@ button{
 
 .tomato{
   padding: 0 15px 0 15px;
+  vertical-align: top;
 }
 
 .tomatoImage{
   position: relative;
+  height: 300px;
 }
 
   /*****************/
@@ -108,9 +110,6 @@ button{
 .upgradeMenu{
   background-color: lightgray;
   padding: 15px 0 15px;
-      position: fixed;
-    left: 0;
-    bottom: 0;
     width: 100%;
 }
 
